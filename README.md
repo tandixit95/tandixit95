@@ -10,7 +10,7 @@ Based in Miami, Florida. I build systems that expose evidence, preserve provenan
 
 Verified public evidence:
 
-- 63 tests, GitHub Actions on Python 3.11-3.13, and clean wheel/source-distribution install gates.
+- 84 tests, GitHub Actions on Python 3.11-3.13, and clean wheel/source-distribution install gates.
 - SciFact Recall@10 across 300 judged queries: BM25 `0.7816`, exact dense `0.7833`, hybrid RRF `0.8212`.
 - Exact A/B reproduction of every reported quality metric and raw top-10 ranking.
 - Nine synthetic authorization/provenance checks with zero unauthorized returns.
@@ -19,6 +19,20 @@ Verified public evidence:
 [Release](https://github.com/tandixit95/AtlasRAG/releases/tag/v0.2.0) | [Results](https://github.com/tandixit95/AtlasRAG/blob/main/benchmarks/RESULTS.md) | [Methodology](https://github.com/tandixit95/AtlasRAG/blob/main/benchmarks/METHODOLOGY.md) | [Evidence package](https://github.com/tandixit95/AtlasRAG/tree/main/benchmarks)
 
 The benchmark evidence is local and reproducible; it is not a production SLO, peer-review claim, or claim of external adoption.
+
+### Scale-evidence reconstruction on `main`
+
+AtlasRAG now includes a fail-closed scale-evidence harness rebuilt from scratch:
+
+- deterministic smoke evidence over 5,000 logical documents, 16 shards, 1,000 queries, and 100 updates;
+- exact two-run reproduction of the claim-bearing counts and SHA-256 digests;
+- a 15-file checksum manifest, JSON schemas, methodology, limitations, and claim ledger;
+- CI verification across Python 3.11-3.13 plus wheel/source-distribution installation;
+- an explicit guard that refuses to treat an unexecuted target configuration as measured evidence.
+
+The repository includes a 100M-document configuration only as `target_unexecuted`. I do **not** claim that 100M documents were generated, indexed, searched, or served, and the harness does not claim distributed retrieval or production QPS.
+
+[Scale methodology](https://github.com/tandixit95/AtlasRAG/tree/main/benchmarks/scale) | [Smoke artifact](https://github.com/tandixit95/AtlasRAG/blob/main/benchmarks/scale/artifacts/smoke-v1.json) | [Claim ledger](https://github.com/tandixit95/AtlasRAG/blob/main/benchmarks/scale/CLAIM_LEDGER.md)
 
 ## Selected open-source work
 
